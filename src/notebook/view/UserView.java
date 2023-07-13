@@ -14,13 +14,14 @@ public class UserView {
         this.userController = userController;
     }
 
-    public void run(){
+    public void run() {
         Commands com;
 
         while (true) {
             String command = prompt("Введите команду: ");
             com = Commands.valueOf(command);
-            if (com == Commands.EXIT) return;
+            if (com == Commands.EXIT)
+                return;
             switch (com) {
                 case CREATE:
                     String firstName = prompt("Имя: ");
@@ -55,12 +56,24 @@ public class UserView {
                         User updated = new User(name, secondName, number);
                         userController.updateUser(userid, updated);
 
-
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                 default:
                     break;
+
+                case DELETE:
+                    String deleteId = prompt("Идентификатор пользователя: ");
+                    try {
+                        Long deleteUserId = Long.parseLong(deleteId);
+                        userController.deleteUser(deleteUserId);
+                        System.out.println("Пользователь успешно удален");
+                        System.out.println();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+
             }
         }
     }

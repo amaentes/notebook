@@ -37,5 +37,8 @@ public class UserController {
         repository.update(userid, user);
 
     }
+
+    public void deleteUser(Long deleteUserId) {
+    }
 }
 
