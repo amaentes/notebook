@@ -16,6 +16,6 @@ public class Main {
         GBRepository<User, Long> repository = new UserRepository(fileOperation);
         UserController controller = new UserController(repository);
         UserView view = new UserView(controller);
-        view.run();
+        view.run(); 
     }
 }
